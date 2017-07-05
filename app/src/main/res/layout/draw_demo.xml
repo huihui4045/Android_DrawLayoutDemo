@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <com.huihui.drawlayout.HuiDrawLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <!--内容  区域-->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/fake"
+            />
+        <!--侧滑区域  LinearLayout    ColorDrawable -->
+        <com.huihui.drawlayout.HuiDrawSlideBar
+            app:maxTranslationX="66dp"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start">
+
+            <TextView
+                style="@style/MenuText"
+                android:drawableLeft="@drawable/circle"
+                android:text="朋友圈" />
+
+            <TextView
+                style="@style/MenuText"
+                android:drawableLeft="@drawable/wallet"
+                android:text="钱包" />
+
+            <TextView
+                style="@style/MenuText"
+                android:drawableLeft="@drawable/coupon"
+                android:text="优惠券" />
+
+
+        </com.huihui.drawlayout.HuiDrawSlideBar>
+
+
+    </com.huihui.drawlayout.HuiDrawLayout>
+
+</LinearLayout>
