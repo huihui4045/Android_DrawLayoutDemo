@@ -81,7 +81,7 @@ public class HuiDrawLayout extends DrawerLayout implements DrawerLayout.DrawerLi
 
         if (ev.getAction() == MotionEvent.ACTION_UP) {
 
-            //closeDrawers();
+            closeDrawers();
             mHuiDrawBgRelativeLayout.onMotionUp();
 
             return super.dispatchTouchEvent(ev);

@@ -42,9 +42,10 @@ public class HuiDrawBgRelativeLayout extends RelativeLayout {
      * @param slideOffset
      */
     public void setTouchY(float y, float slideOffset) {
+        mHuiDrawSlideBar.setTouchY(y, slideOffset);
         myDrawBgView.setTouchY(y,slideOffset);
         // myDrawSlideBar.setTouchY(y, slideOffset);
-        mHuiDrawSlideBar.setTouchY(y, slideOffset);
+
 
     }
 

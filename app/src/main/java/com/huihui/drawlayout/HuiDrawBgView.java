@@ -1,8 +1,13 @@
 package com.huihui.drawlayout;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.Shader;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
@@ -19,6 +24,8 @@ import android.view.View;
 public class HuiDrawBgView extends View {
     private Paint paint;
     private Path path;
+
+    private BitmapDrawable drawable;
 
     public HuiDrawBgView(Context context) {
         this(context,null);
@@ -43,8 +50,8 @@ public class HuiDrawBgView extends View {
 
         float width=getWidth()*percent;
         float height=getHeight();
-        float offsetY=height/8;
-        float x=width/2;
+        float offsetY=height/10;
+        float x=width*2/3;
         path.lineTo(x,-offsetY);
         path.quadTo(width*3/2,y,x,height+offsetY);
         path.lineTo(0,height);
@@ -52,6 +59,21 @@ public class HuiDrawBgView extends View {
         invalidate();
 
     }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+
+        if (drawable!=null){
+
+            Bitmap bitmap=drawable.getBitmap();
+            Shader shader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+            paint.setShader(shader);
+        }
+        paint.setStyle(Paint.Style.FILL);
+        canvas.drawPath(path,paint);
+    }
+
 
 
     /**
@@ -66,8 +88,9 @@ public class HuiDrawBgView extends View {
         if (color instanceof ColorDrawable) {
             ColorDrawable colorDrawable= (ColorDrawable) color;
             paint.setColor(colorDrawable.getColor());
-        }else {
-            //作业    实现背景图片 的  变换
+        }else if (color instanceof BitmapDrawable){
+            this.drawable= (BitmapDrawable) color;
+
         }
     }
 }
